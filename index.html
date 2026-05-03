@@ -6,12 +6,12 @@
 <title>Egemak Saha Uygulaması</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0f1a;--surface:#111827;--surface2:#1a2234;--border:#1e2d45;--accent:#f18d00;--accent2:#fbb040;--green:#22c55e;--yellow:#eab308;--red:#ef4444;--text:#f0f6ff;--muted:#64748b;--muted2:#94a3b8;--daikin:#0ea5e9;--giacomini:#e85d24;--daylux:#0d9488}
+:root{--bg:#ffffff;--surface:#f8f9fa;--surface2:#f1f3f5;--border:#dee2e6;--accent:#f18d00;--accent2:#ffa726;--green:#22c55e;--yellow:#f59e0b;--red:#ef4444;--text:#1a1a2e;--muted:#6c757d;--muted2:#868e96;--daikin:#0ea5e9;--giacomini:#e85d24;--daylux:#0d9488}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;justify-content:center}
 .app{width:100%;max-width:420px;min-height:100vh;position:relative}
 #loginScreen{position:fixed;inset:0;z-index:999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px}
-.login-logo{width:68px;height:68px;background:linear-gradient(135deg,var(--accent),#b45309);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:14px}
+.login-logo{width:68px;height:68px;background:linear-gradient(135deg,var(--accent),#e67e22);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:14px;color:white}
 .login-title{font-size:24px;font-weight:700;margin-bottom:3px}
 .login-sub{font-size:12px;color:var(--muted2);margin-bottom:36px}
 .ln-form{width:100%;display:flex;flex-direction:column;gap:12px}
@@ -736,7 +736,7 @@ var dayluxP=[
   {model:"DL-ISOL-8",name:"Yalıtım Bandı 8mm",cat:"Aksesuar",icon:"🧱",ic:"co",stock:200,sl:"g",pEUR:0.55,isk:40,specs:[{k:"Kalınlık",v:"8mm"},{k:"Genişlik",v:"150mm"},{k:"Uzunluk",v:"50m"}],depos:[{n:"İzmir Ana",c:200}]}
 ];
 
-
+var clients = [
   {name:"Özgür Klima Ltd.", det:"Manisa • Bayi • C-00142"},
   {name:"Aydın Teknik Müh.", det:"Aydın • Proje • C-00289"},
   {name:"Denizli Klima A.Ş.", det:"Denizli • Bayi • C-00071"},
