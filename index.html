@@ -62,6 +62,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .cat{flex-shrink:0;padding:7px 13px;border-radius:9px;font-size:11px;font-weight:500;border:1px solid var(--border);background:var(--surface2);color:var(--muted2);cursor:pointer;white-space:nowrap;transition:all .15s}
 .cat.on{background:var(--accent);border-color:var(--accent);color:white}
 .cat.gon{background:var(--giacomini);border-color:var(--giacomini);color:white}
+.cat.dxon{background:var(--daylux);border-color:var(--daylux);color:white}
 .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;padding:12px 18px 0}
 .sc{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:13px 10px;text-align:center}
 .sn{font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:3px}
@@ -300,7 +301,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 <div id="loginScreen">
   <div class="login-logo">❄️</div>
   <div class="login-title">Egemak Saha</div>
-  <div class="login-sub">Daikin & Giacomini Distribütörü</div>
+  <div class="login-sub">Daikin, Giacomini & Daylux Distribütörü</div>
   <div class="ln-form">
     <input class="fi" type="text" placeholder="Kullanıcı adı">
     <input class="fi" type="password" placeholder="Şifre">
@@ -654,8 +655,8 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 </div>
 
 <script>
-var EUR = 51.0859;
-var eurKurDate = "04.03.2026";
+var EUR = 38.92;
+var eurKurDate = "03.05.2026";
 var cur = 'TL', brand = 'daikin', activeCat = 'Tümü', sq = '', offerLines = [], curProd = null;
 var currentOfferIdx = -1;
 
@@ -793,7 +794,7 @@ function renderCats() {
   if (cats.indexOf(activeCat) === -1) activeCat = 'Tümü';
   document.getElementById('catList').innerHTML = cats.map(function(c) {
     var on = c === activeCat;
-    var cls = on ? (brand === 'giacomini' ? 'cat gon' : 'cat on') : 'cat';
+    var cls = on ? (brand === 'giacomini' ? 'cat gon' : brand === 'daylux' ? 'cat dxon' : 'cat on') : 'cat';
     return '<div class="' + cls + '" onclick="setCat(\'' + c.replace(/'/g, "\\'") + '\')">' + c + '</div>';
   }).join('');
 }
@@ -831,7 +832,7 @@ function renderProds() {
     var idx = prods.indexOf(p);
     return '<div class="pc" onclick="openDetail(' + idx + ')" style="animation-delay:' + (i * 0.04) + 's">' +
       '<div class="ph2"><div class="pi-img-fallback ' + p.ic + '">' + p.icon + '</div>' +
-      '<div class="pinfo"><div class="pm' + (isGia ? ' gm' : '') + '">' + p.model + '</div><div class="pn">' + p.name + '</div><div class="pcat">' + (isGia ? 'Giacomini' : 'Daikin') + ' • ' + p.cat + '</div></div>' +
+      '<div class="pinfo"><div class="pm' + (isGia ? ' gm' : '') + '">' + p.model + '</div><div class="pn">' + p.name + '</div><div class="pcat">' + (brand === 'giacomini' ? 'Giacomini' : brand === 'daylux' ? 'Daylux' : 'Daikin') + ' • ' + p.cat + '</div></div>' +
       '<div class="sb ' + p.sl + '">' + (p.stock === 0 ? 'TÜKENDİ' : p.stock + ' adet') + '</div></div>' +
       '<div class="pf"><div class="price-area">' + pH + '</div><button class="det-btn">Detay →</button></div></div>';
   }).join('');
@@ -853,7 +854,7 @@ function updateKurBadge() {
 function fetchTCMBKur() { updateKurBadge(); renderProds(); }
 function applyKur(val) {
   var k = parseFloat(val);
-  if (!k || k < 1 || k > 200) return;
+  if (!k || k < 1 || k > 300) return;
   EUR = k;
   renderProds();
   if (curProd) calcIsk();
@@ -1186,7 +1187,7 @@ function generatePDF() {
     '<div style="background:linear-gradient(135deg,#0ea5e9,#0369a1);padding:20px 24px;color:white">' +
     '<div style="display:flex;justify-content:space-between;align-items:flex-start">' +
     '<div><div style="font-size:20px;font-weight:800">❄️ EGEMAK</div>' +
-    '<div style="font-size:11px;opacity:.85;margin-top:2px">Daikin & Giacomini Ege Bölgesi Distribütörü</div>' +
+    '<div style="font-size:11px;opacity:.85;margin-top:2px">Daikin, Giacomini & Daylux Ege Bölgesi Distribütörü</div>' +
     '<div style="font-size:10px;opacity:.7;margin-top:4px">info@egemak.tr • +90 232 458 12 22</div></div>' +
     '<div style="text-align:right"><div style="font-size:11px;opacity:.8">Teklif No</div>' +
     '<div style="font-size:16px;font-weight:700;font-family:monospace">#' + no + '</div></div></div></div>' +
